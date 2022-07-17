@@ -45,11 +45,27 @@ characterSelect::characterSelect(game* g)
 	order[21] = LEMRES;
 	order[22] = OSHARE_BONES;
 	order[23] = YU_REI;
+    order[24] = AKUMA;
+    order[25] = ALLY;
+    order[26] = BALDANDERS;
+    order[27] = FRANKENSTEINS;
+    order[28] = GOGOTTE;
+    order[29] = HOHOW_BIRD;
+    order[30] = LAGNUS;
+    order[31] = NASU_GRAVE;
+    order[32] = ONION_PIXIE;
+    order[33] = POPOI;
+    order[34] = RAFISOL;
+    order[35] = STRANGE_KLUG;
+    order[36] = TARTAR;
+    order[37] = ZOH_DAIMAOH;
+    order[38] = LEGAMUNT;
+    order[39] = ROZATTE;
 
-	constexpr int height = 3;
+    constexpr int height = 5;
 	for (int i = 0; i < height; i++)
 	{
-		constexpr int width = 8;
+        constexpr int width = 8;
 		for (int j = 0; j < width; j++)
 		{
 			holder[i * width + j].setImage(g->data->imgCharHolder);
@@ -155,12 +171,12 @@ void characterSelect::play()
 	{
 		background.setTransparency(static_cast<float>(interpolate("linear", 0.0, 0.5, timer / 60.0)));
 	}
-	if (timer <= 80 && timer > 0)
+    if (timer <= 160 && timer > 0)
 	{
-		constexpr int height = 3;
+        constexpr int height = 5;
 		for (int i = 0; i < height; i++)
 		{
-			constexpr int width = 8;
+            constexpr int width = 8;
 			for (int j = 0; j < width; j++)
 			{
 				const double tt = timer / 20.0 - (i * width + j) / 12.0;
@@ -185,7 +201,7 @@ void characterSelect::play()
 	}
 
 	//move in
-	if (timer <= 160 && timer > 0)
+    if (timer <= (4 * NUM_CHARACTERS) && timer > 0)
 	{
 		for (int i = 0; i < Nplayers; i++)
 		{
@@ -320,16 +336,16 @@ void characterSelect::play()
 			}
 
 			if (sel[i] < 0)
-				sel[i] += 24;
+                sel[i] += 40;
 
 			if (selX < 0)
 				selX += 8;
 
 			if (selY < 0)
-				selY += 3;
+                selY += 5;
 
 			selX %= 8;
-			selY %= 3;
+            selY %= 5;
 
 			sel[i] = selY * 8 + selX;
 			const int jj = sel[i] % 8;
@@ -441,7 +457,7 @@ void characterSelect::play()
 				dropset[i * 16 + j].setTransparency(1 - t);
 			nameHolder[i].setTransparency(1 - t);
 		}
-		for (int i = 0; i < 24; i++)
+        for (int i = 0; i < NUM_CHARACTERS; i++)
 		{
 			holder[i].setTransparency(1 - t);
 			charSprite[i].setTransparency(1 - t);
@@ -449,7 +465,7 @@ void characterSelect::play()
 	}
 	if (timer<0 && timer>-80)
 	{
-		constexpr int height = 3;
+        constexpr int height = 5;
 		for (int i = 0; i < height; i++)
 		{
 			constexpr int width = 8;
@@ -785,7 +801,7 @@ int characterSelect::findCurrentCharacter(int i)
 {
 	puyoCharacter pc = currentgame->players[i]->getCharacter();
 	//find selection
-	for (int j = 0; j < 24; j++)
+    for (int j = 0; j < NUM_CHARACTERS; j++)
 	{
 		if (order[j] == pc)
 			return j;
@@ -803,7 +819,7 @@ void characterSelect::setCharacter(int playernum, int selection, bool choice)
 		int i = playernum;
 		//find selection from character order
 		int s = 0;
-		for (int j = 0; j < 24; j++)
+        for (int j = 0; j < NUM_CHARACTERS; j++)
 		{
 			if (selection == static_cast<int>(order[j]))
 			{

@@ -33,6 +33,22 @@ namespace ppvs
     SUKETOUDARA,
     WITCH,
     YU_REI,
+    AKUMA,
+    ALLY,
+    BALDANDERS,
+    FRANKENSTEINS,
+    GOGOTTE,
+    HOHOW_BIRD,
+    LAGNUS,
+    NASU_GRAVE,
+    ONION_PIXIE,
+    POPOI,
+    RAFISOL,
+    STRANGE_KLUG,
+    TARTAR,
+    ZOH_DAIMAOH,
+    LEGAMUNT,
+    ROZATTE
 };*/
 
 enum movePuyoType

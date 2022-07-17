@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>341</width>
-    <height>502</height>
+    <width>382</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -24,7 +24,7 @@
    <item>
     <widget class="QTabWidget" name="SettingsTabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="GeneralTab">
       <attribute name="title">
@@ -236,6 +236,76 @@
                 <string>Yu &amp; Rei</string>
                </property>
               </item>
+              <item>
+               <property name="text">
+                <string>Akuma</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Ally</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Baldanders</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Frankensteins</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gogotte</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Hohow Bird</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Onion Pixie</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Popoi</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Rafisol</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Strange Klug</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Tartar</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Zoh Daimaoh</string>
+               </property>
+              </item>
+              <item>
+              	<property name="text">
+              	 <string>Legamünt</string>
+              	</property>
+              </item>
+              <item>
+              	<property name="text">
+              	 <string>Rozatte</string>
+              	</property>
+              </item>              
              </widget>
             </item>
             <item row="1" column="0">
@@ -771,9 +841,9 @@
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
-               <width>282</width>
-               <height>560</height>
+               <y>-1088</y>
+               <width>309</width>
+               <height>1412</height>
               </rect>
              </property>
              <layout class="QFormLayout" name="formLayout_3">
@@ -829,6 +899,13 @@
               </item>
               <item row="4" column="1">
                <widget class="QComboBox" name="Char4ComboBox"/>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="Char5Label">
+                <property name="text">
+                 <string comment="Char6">Carbuncle</string>
+                </property>
+               </widget>
               </item>
               <item row="5" column="1">
                <widget class="QComboBox" name="Char5ComboBox"/>
@@ -1005,6 +1082,9 @@
               </item>
               <item row="23" column="0">
                <widget class="QLabel" name="Char23Label">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
                  <string comment="Char24">Yu &amp; Rei</string>
                 </property>
@@ -1013,13 +1093,166 @@
               <item row="23" column="1">
                <widget class="QComboBox" name="Char23ComboBox"/>
               </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="Char5Label">
+              <item row="24" column="0">
+               <widget class="QLabel" name="Char24Label">
                 <property name="text">
-                 <string comment="Char6">Carbuncle</string>
+                 <string>Akuma</string>
                 </property>
                </widget>
               </item>
+              <item row="24" column="1">
+               <widget class="QComboBox" name="Char24ComboBox"/>
+              </item>
+              <item row="25" column="0">
+               <widget class="QLabel" name="Char25Label">
+                <property name="text">
+                 <string>Ally</string>
+                </property>
+               </widget>
+              </item>
+              <item row="25" column="1">
+               <widget class="QComboBox" name="Char25ComboBox"/>
+              </item>
+              <item row="26" column="0">
+               <widget class="QLabel" name="Char26Label">
+                <property name="text">
+                 <string>Baldanders</string>
+                </property>
+               </widget>
+              </item>
+              <item row="26" column="1">
+               <widget class="QComboBox" name="Char26ComboBox"/>
+              </item>
+              <item row="27" column="0">
+               <widget class="QLabel" name="Char27Label">
+                <property name="text">
+                 <string>Frankensteins</string>
+                </property>
+               </widget>
+              </item>
+              <item row="27" column="1">
+               <widget class="QComboBox" name="Char27ComboBox"/>
+              </item>
+              <item row="28" column="0">
+               <widget class="QLabel" name="Char28Label">
+                <property name="text">
+                 <string>Gogotte</string>
+                </property>
+               </widget>
+              </item>
+              <item row="28" column="1">
+               <widget class="QComboBox" name="Char28ComboBox"/>
+              </item>
+              <item row="29" column="0">
+               <widget class="QLabel" name="Char29Label">
+                <property name="text">
+                 <string>Hohow Bird</string>
+                </property>
+               </widget>
+              </item>
+              <item row="29" column="1">
+               <widget class="QComboBox" name="Char29ComboBox"/>
+              </item>
+              <item row="30" column="0">
+               <widget class="QLabel" name="Char30Label">
+                <property name="text">
+                 <string>Lagnus</string>
+                </property>
+               </widget>
+              </item>
+              <item row="30" column="1">
+               <widget class="QComboBox" name="Char30ComboBox"/>
+              </item>
+              <item row="31" column="0">
+               <widget class="QLabel" name="Char31Label">
+                <property name="text">
+                 <string>Nasu Grave</string>
+                </property>
+               </widget>
+              </item>
+              <item row="31" column="1">
+               <widget class="QComboBox" name="Char31ComboBox"/>
+              </item>
+              <item row="32" column="0">
+               <widget class="QLabel" name="Char32Label">
+                <property name="text">
+                 <string>Onion Pixie</string>
+                </property>
+               </widget>
+              </item>
+              <item row="32" column="1">
+               <widget class="QComboBox" name="Char32ComboBox"/>
+              </item>
+              <item row="33" column="0">
+               <widget class="QLabel" name="Char33Label">
+                <property name="text">
+                 <string>Popoi</string>
+                </property>
+               </widget>
+              </item>
+              <item row="33" column="1">
+               <widget class="QComboBox" name="Char33ComboBox"/>
+              </item>
+              <item row="34" column="0">
+               <widget class="QLabel" name="Char34Label">
+                <property name="text">
+                 <string>Rafisol</string>
+                </property>
+               </widget>
+              </item>
+              <item row="34" column="1">
+               <widget class="QComboBox" name="Char34ComboBox"/>
+              </item>
+              <item row="35" column="0">
+               <widget class="QLabel" name="Char35Label">
+                <property name="text">
+                 <string>Strange Klug</string>
+                </property>
+               </widget>
+              </item>
+              <item row="35" column="1">
+               <widget class="QComboBox" name="Char35ComboBox"/>
+              </item>
+              <item row="36" column="0">
+               <widget class="QLabel" name="Char36Label">
+                <property name="text">
+                 <string>Tartar</string>
+                </property>
+               </widget>
+              </item>
+              <item row="36" column="1">
+               <widget class="QComboBox" name="Char36ComboBox"/>
+              </item>
+              <item row="37" column="0">
+               <widget class="QLabel" name="Char37Label">
+                <property name="text">
+                 <string>Zoh Daimaoh</string>
+                </property>
+               </widget>
+              </item>
+              <item row="37" column="1">
+               <widget class="QComboBox" name="Char37ComboBox"/>
+              </item>
+              <item row="38" column="0">
+               <widget class="QLabel" name="Char38Label">
+                <property name="text">
+                 <string>Legamünt</string>
+                </property>
+               </widget>
+              </item>
+              <item row="38" column="1">
+               <widget class="QComboBox" name="Char38ComboBox"/>
+              </item>
+              <item row="39" column="0">
+               <widget class="QLabel" name="Char39Label">
+                <property name="text">
+                 <string>Rozatte</string>
+                </property>
+               </widget>
+              </item>
+              <item row="39" column="1">
+               <widget class="QComboBox" name="Char39ComboBox"/>
+              </item>                            
              </layout>
             </widget>
            </widget>
