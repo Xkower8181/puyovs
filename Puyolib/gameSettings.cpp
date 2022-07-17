@@ -102,6 +102,22 @@ gameSettings::gameSettings(const rulesetInfo_t &rulesetInfo) : rulesetInfo(rules
     characterSetup[SUKETOUDARA]="Suketoudara";
     characterSetup[WITCH]="Witch";
     characterSetup[YU_REI]="Yu";
+    characterSetup[AKUMA]="Akuma";
+    characterSetup[ALLY]="Ally";
+    characterSetup[BALDANDERS]="Baldanders";
+    characterSetup[FRANKENSTEINS]="Frankensteins";
+    characterSetup[GOGOTTE]="Gogotte";
+    characterSetup[HOHOW_BIRD]="Hohow Bird";
+    characterSetup[LAGNUS]="Lagnus";
+    characterSetup[NASU_GRAVE]="Nasu Grave";
+    characterSetup[ONION_PIXIE]="Onion Pixie";
+    characterSetup[POPOI]="Popoi";
+    characterSetup[RAFISOL]="Rafisol";
+    characterSetup[STRANGE_KLUG]="Strange Klug";
+    characterSetup[TARTAR]="Tartar";
+    characterSetup[ZOH_DAIMAOH]="Zoh Daimaoh";
+    characterSetup[LEGAMUNT]="Legamünt";
+    characterSetup[ROZATTE]="Rozatte";
 
     //default controls
     controls["1up"]="up";

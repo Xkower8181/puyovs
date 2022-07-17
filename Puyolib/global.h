@@ -75,7 +75,24 @@ typedef char puyoCharacter;
 #define SUKETOUDARA     21
 #define WITCH           22
 #define YU_REI          23
-#define NUM_CHARACTERS  24
+#define AKUMA           24
+#define ALLY            25
+#define BALDANDERS      26
+#define FRANKENSTEINS   27
+#define GOGOTTE         28
+#define HOHOW_BIRD      29
+#define LAGNUS          30
+#define NASU_GRAVE      31
+#define ONION_PIXIE     32
+#define POPOI           33
+#define RAFISOL         34
+#define STRANGE_KLUG    35
+#define TARTAR          36
+#define ZOH_DAIMAOH     37
+#define LEGAMUNT        38
+#define ROZATTE         39
+#define NUM_CHARACTERS  40
+
 
 //enum playerType
 //{

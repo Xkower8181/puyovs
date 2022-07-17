@@ -1,6 +1,7 @@
 #include "inputdialog.h"
 #include "ui_inputdialog.h"
 #include "common.h"
+#include "math.h"
 
 #include <ilib/driver.h>
 
