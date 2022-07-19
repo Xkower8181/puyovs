@@ -6,6 +6,7 @@
 #include <ilib/driver.h>
 
 #include <QTimer>
+#include <math.h>
 
 InputDialog::InputDialog(QWidget* parent) :
 	QDialog(parent),
