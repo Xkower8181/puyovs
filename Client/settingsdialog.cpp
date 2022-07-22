@@ -29,7 +29,9 @@ SettingsDialog::SettingsDialog(LanguageManager* lm, QWidget* parent) :
         << ui->Char24ComboBox << ui->Char25ComboBox << ui->Char26ComboBox << ui->Char27ComboBox
         << ui->Char28ComboBox << ui->Char29ComboBox << ui->Char30ComboBox << ui->Char31ComboBox
         << ui->Char32ComboBox << ui->Char33ComboBox << ui->Char34ComboBox << ui->Char35ComboBox
-        << ui->Char36ComboBox << ui->Char37ComboBox << ui->Char38ComboBox << ui->Char39ComboBox;
+        << ui->Char36ComboBox << ui->Char37ComboBox << ui->Char38ComboBox << ui->Char39ComboBox
+        << ui->Char40ComboBox << ui->Char41ComboBox << ui->Char42ComboBox << ui->Char43ComboBox
+        << ui->Char44ComboBox << ui->Char45ComboBox;
 
 	languageManager = lm;
 	languagesModified();

@@ -91,7 +91,13 @@ typedef char puyoCharacter;
 #define ZOH_DAIMAOH     37
 #define LEGAMUNT        38
 #define ROZATTE         39
-#define NUM_CHARACTERS  40
+#define CIEL            40
+#define DARK_ARLE       41
+#define MARLE           42
+#define PAPRISU         43
+#define SONIC           44
+#define SQUARES         45
+#define NUM_CHARACTERS  46
 
 
 //enum playerType

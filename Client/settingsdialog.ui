@@ -305,7 +305,37 @@
               	<property name="text">
               	 <string>Rozatte</string>
               	</property>
-              </item>              
+              </item>  
+              <item>
+              	<property name="text">
+              	 <string>Ciel</string>
+              	</property>
+              </item>  
+              <item>
+               <property name="text">
+                <string>Dark Arle</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Marle</string>
+               </property>
+              </item>
+              <item>
+              	<property name="text">
+              	 <string>Paprisu</string>
+              	</property>
+              </item>
+              <item>
+              	<property name="text">
+              	 <string>Sonic</string>
+              	</property>
+              </item>  
+              <item>
+              	<property name="text">
+              	 <string>Squares</string>
+              	</property>
+              </item>                                        
              </widget>
             </item>
             <item row="1" column="0">
@@ -1252,7 +1282,67 @@
               </item>
               <item row="39" column="1">
                <widget class="QComboBox" name="Char39ComboBox"/>
-              </item>                            
+              </item>  
+			  <item row="40" column="0">
+               <widget class="QLabel" name="Char40Label">
+                <property name="text">
+                 <string>Ciel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="40" column="1">
+               <widget class="QComboBox" name="Char40ComboBox"/>
+              </item>              
+			  <item row="41" column="0">
+               <widget class="QLabel" name="Char41Label">
+                <property name="text">
+                 <string>Dark Arle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="41" column="1">
+               <widget class="QComboBox" name="Char41ComboBox"/>
+              </item>               
+			  <item row="42" column="0">
+               <widget class="QLabel" name="Char42Label">
+                <property name="text">
+                 <string>Marle</string>
+                </property>
+               </widget>
+              </item>
+              <item row="42" column="1">
+               <widget class="QComboBox" name="Char42ComboBox"/>
+              </item>               
+			  <item row="43" column="0">
+               <widget class="QLabel" name="Char43Label">
+                <property name="text">
+                 <string>Paprisu</string>
+                </property>
+               </widget>
+              </item>
+              <item row="43" column="1">
+               <widget class="QComboBox" name="Char43ComboBox"/>
+              </item>              
+			  <item row="44" column="0">
+               <widget class="QLabel" name="Char44Label">
+                <property name="text">
+                 <string>Sonic</string>
+                </property>
+               </widget>
+              </item>
+              <item row="44" column="1">
+               <widget class="QComboBox" name="Char44ComboBox"/>
+              </item> 
+			  <item row="45" column="0">
+               <widget class="QLabel" name="Char45Label">
+                <property name="text">
+                 <string>Squares</string>
+                </property>
+               </widget>
+              </item>
+              <item row="45" column="1">
+               <widget class="QComboBox" name="Char45ComboBox"/>
+              </item>                                                                                                               
              </layout>
             </widget>
            </widget>

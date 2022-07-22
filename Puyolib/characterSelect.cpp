@@ -61,26 +61,41 @@ characterSelect::characterSelect(game* g)
     order[37] = ZOH_DAIMAOH;
     order[38] = LEGAMUNT;
     order[39] = ROZATTE;
+    order[40] = CIEL;
+    order[41] = DARK_ARLE;
+    order[42] = MARLE;
+    order[43] = PAPRISU;
+    order[44] = SONIC;
+    order[45] = SQUARES;
 
-    constexpr int height = 5;
-	for (int i = 0; i < height; i++)
+    constexpr int width = 8;
+    int j = 0;
+    int fi = 0;
+    for (int i = 0; i < NUM_CHARACTERS; i++)
 	{
-        constexpr int width = 8;
-		for (int j = 0; j < width; j++)
-		{
-			holder[i * width + j].setImage(g->data->imgCharHolder);
-			holder[i * width + j].setCenter(0, 0);
-			holder[i * width + j].setPosition(
+            if (((i+ 1) % width) == 0)
+            {
+                j = (width - 1);
+            }
+            else if (((i+ 1) % width) != 0)
+            {
+                j = (((i + 1) % width) - 1);
+            };
+            fi = ((i - j) / width);
+
+            holder[i].setImage(g->data->imgCharHolder);
+            holder[i].setCenter(0, 0);
+            holder[i].setPosition(
 				static_cast<float>(64 + j * 66),
-				static_cast<float>(64 + i * 52)
+                static_cast<float>(64 + fi * 52)
 			);
-			charSprite[i * width + j].setImage(g->data->front->loadImage(folder_user_character + currentgame->settings->characterSetup[order[i * width + j]] + "/icon.png"));
-			charSprite[i * width + j].setCenter(0, 0);
-			charSprite[i * width + j].setPosition(
+            charSprite[i].setImage(g->data->front->loadImage(folder_user_character + currentgame->settings->characterSetup[order[i]] + "/icon.png"));
+            charSprite[i].setCenter(0, 0);
+            charSprite[i].setPosition(
 				static_cast<float>(64 + j * 66 + 1),
-				static_cast<float>(64 + i * 52 + 1)
+                static_cast<float>(64 + fi * 52 + 1)
 			);
-		}
+
 	}
 	timer = 0;
 
@@ -173,13 +188,22 @@ void characterSelect::play()
 	}
     if (timer <= 160 && timer > 0)
 	{
-        constexpr int height = 5;
-		for (int i = 0; i < height; i++)
-		{
-            constexpr int width = 8;
-			for (int j = 0; j < width; j++)
-			{
-				const double tt = timer / 20.0 - (i * width + j) / 12.0;
+        constexpr int width = 8;
+        int j = 0;
+        int fi = 0;
+        for (int i = 0; i < NUM_CHARACTERS; i++)
+        {
+                if (((i+ 1) % width) == 0)
+                {
+                    j = (width - 1);
+                }
+                else if (((i+ 1) % width) != 0)
+                {
+                    j = (((i + 1) % width) - 1);
+                };
+                fi = ((i - j) / width);
+
+                const double tt = timer / 20.0 - (i) / 12.0;
 				float move = static_cast<float>(interpolate("exponential", 1, 0, tt, -2, 1));
 				if (move > 1)
 				{
@@ -189,14 +213,13 @@ void characterSelect::play()
 				{
 					move = 0;
 				}
-				holder[i * width + j].setPosition(
+                holder[i].setPosition(
 					static_cast<float>(64 + j * 66) + 640.f * move,
-					static_cast<float>(64 + i * 52)
+                    static_cast<float>(64 + fi * 52)
 				);
-				charSprite[i * width + j].setPosition(
+                charSprite[i].setPosition(
 					static_cast<float>(64 + j * 66) + 1.f + 640.f * move,
-					static_cast<float>(64 + i * 52) + 1.f);
-			}
+                    static_cast<float>(64 + fi * 52) + 1.f);
 		}
 	}
 
@@ -336,16 +359,33 @@ void characterSelect::play()
 			}
 
 			if (sel[i] < 0)
-                sel[i] += 40;
+                sel[i] += NUM_CHARACTERS;
 
 			if (selX < 0)
 				selX += 8;
 
 			if (selY < 0)
-                selY += 5;
+                selY += 6;
 
-			selX %= 8;
-            selY %= 5;
+            constexpr int height = (NUM_CHARACTERS / 8);
+
+            if ((NUM_CHARACTERS % 8) != 0)
+            {
+                if (selY == height)
+                {
+                    constexpr int max = (NUM_CHARACTERS % 8);
+                    selX %= max;
+                }
+                else if (selY < height)
+                {
+                    selX %= 8;
+                }
+            }
+            else if ((NUM_CHARACTERS % 8) == 0)
+            {
+                selX %= 8;
+            };
+            selY %= 6;
 
 			sel[i] = selY * 8 + selX;
 			const int jj = sel[i] % 8;
@@ -464,14 +504,23 @@ void characterSelect::play()
 		}
 	}
 	if (timer<0 && timer>-80)
-	{
-        constexpr int height = 5;
-		for (int i = 0; i < height; i++)
-		{
-			constexpr int width = 8;
-			for (int j = 0; j < width; j++)
-			{
-				double tt = static_cast<double>(-timer) / 20.0 - static_cast<double>(i * width + j) / 12.0;
+    {
+        constexpr int width = 8;
+        int j = 0;
+        int fi = 0;
+        for (int i = 0; i < NUM_CHARACTERS; i++)
+        {
+                if (((i+ 1) % width) == 0)
+                {
+                    j = (width - 1);
+                }
+                else if (((i+ 1) % width) != 0)
+                {
+                    j = (((i + 1) % width) - 1);
+                };
+                fi = ((i - j) / width);
+
+                double tt = static_cast<double>(-timer) / 20.0 - static_cast<double>(i) / 12.0;
 				float move = static_cast<float>(interpolate("exponential", 1, 0, tt, -2, 1));
 
 				if (move > 1)
@@ -479,15 +528,15 @@ void characterSelect::play()
 				else if (move < 0)
 					move = 0;
 
-				holder[i * width + j].setPosition(
+                holder[i].setPosition(
 					static_cast<float>(64 + j * 66) + 640.f * move,
-					static_cast<float>(64 + i * 52)
+                    static_cast<float>(64 + fi * 52)
 				);
-				charSprite[i * width + j].setPosition(
+                charSprite[i].setPosition(
 					static_cast<float>(64 + j * 66 + 1) + 640.f * move,
-					static_cast<float>(64 + i * 52 + 1)
+                    static_cast<float>(64 + fi * 52 + 1)
 				);
-			}
+
 		}
 	}
 	if (timer < 0 && timer >= -160)
@@ -615,7 +664,7 @@ void characterSelect::prepare()
 
 		if (firstStart)
 		{
-			sel[i] = i % 24;
+            sel[i] = i % NUM_CHARACTERS;
 		}
 		else
 		{
