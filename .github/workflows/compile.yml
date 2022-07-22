@@ -150,11 +150,11 @@ jobs:
         }
 
         case ${GITHUB_REF} in
-          refs/heads/master)
-            { release_id=$(github_get_release_id_for_tag nightly); status=$?; } || true
+          refs/heads/jankplus)
+            { release_id=$(github_get_release_id_for_tag nightlyjnkp); status=$?; } || true
             case ${status} in
               0) github_delete_release_by_id "${release_id}" ;;
-              22) >&2 echo "No current nightly release; skipping stale release cleanup." ;;
+              22) >&2 echo "No current nightlyjnkp release; skipping stale release cleanup." ;;
               *) >&2 echo "API call failed unexpectedly." && exit 1 ;;
             esac
             echo "RELEASE_TAG=nightlyjnkp" >> $GITHUB_ENV
