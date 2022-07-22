@@ -118,6 +118,12 @@ gameSettings::gameSettings(const rulesetInfo_t &rulesetInfo) : rulesetInfo(rules
     characterSetup[ZOH_DAIMAOH]="Zoh Daimaoh";
     characterSetup[LEGAMUNT]="Legamünt";
     characterSetup[ROZATTE]="Rozatte";
+    characterSetup[CIEL]="Ciel";
+    characterSetup[DARK_ARLE]="Dark Arle";
+    characterSetup[MARLE]="Marle";
+    characterSetup[PAPRISU]="Paprisu";
+    characterSetup[SONIC]="Sonic";
+    characterSetup[SQUARES]="Squares";
 
     //default controls
     controls["1up"]="up";

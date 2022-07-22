@@ -29,10 +29,10 @@ class characterSelect
         int timer;
         game* currentgame;
         gameData *data;
-        puyoCharacter order[40];
+        puyoCharacter order[NUM_CHARACTERS];
         sprite background;
-        sprite holder[40];
-        sprite charSprite[40];
+        sprite holder[NUM_CHARACTERS];
+        sprite charSprite[NUM_CHARACTERS];
         fimage *backgroundImage;
 
         //player stuff

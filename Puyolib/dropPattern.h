@@ -48,7 +48,13 @@ namespace ppvs
     TARTAR,
     ZOH_DAIMAOH,
     LEGAMUNT,
-    ROZATTE
+    ROZATTE,
+    CIEL,
+    DARK_ARLE,
+    MARLE,
+    PAPRISU,
+    SONIC,
+    SQUARES
 };*/
 
 enum movePuyoType
