@@ -163,6 +163,21 @@ jobs:
             echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
             ;;
         esac
+        
+        case ${GITHUB_REF} in
+          refs/heads/jankplus)
+            { release_id=$(github_get_release_id_for_tag nightly); status=$?; } || true
+            case ${status} in
+              0) github_delete_release_by_id "${release_id}" ;;
+              22) >&2 echo "No current nightly release; skipping stale release cleanup." ;;
+              *) >&2 echo "API call failed unexpectedly." && exit 1 ;;
+            esac
+            echo "RELEASE_TAG=nightlyjknp" >> $GITHUB_ENV
+            ;;
+          refs/tags/*)
+            echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+            ;;
+        esac
 
     - if: github.ref == 'refs/heads/master'
       uses: rickstaa/action-create-tag@v1
