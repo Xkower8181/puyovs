@@ -166,16 +166,16 @@ jobs:
         
         case ${GITHUB_REF} in
           refs/heads/jankplus)
-            { release_id=$(github_get_release_id_for_tag nightly); status=$?; } || true
+            { release_id=$(github_get_release_id_for_tag nightlyjnkp); status=$?; } || true
             case ${status} in
               0) github_delete_release_by_id "${release_id}" ;;
               22) >&2 echo "No current nightly release; skipping stale release cleanup." ;;
               *) >&2 echo "API call failed unexpectedly." && exit 1 ;;
             esac
-            echo "RELEASE_TAG=nightlyjknp" >> $GITHUB_ENV
+            echo "RELEASE_TAG_JNKP=nightlyjknp" >> $GITHUB_ENV
             ;;
           refs/tags/*)
-            echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+            echo "RELEASE_TAG_JNKP=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
             ;;
         esac
 
@@ -203,5 +203,15 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         files: puyovs-*/puyovs-*.7z
         tag_name: ${{ env.RELEASE_TAG }}
+        fail_on_unmatched_files: true
+        prerelease: true
+
+    - name: Release Jank+
+      uses: softprops/action-gh-release@v1
+      with:
+        body: Latest nightly build of the jankplus branch. **Nightly builds are for testing purposes only. They should not be used for ordinary play. You may experience unexpected behavior.**
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: puyovs-*/puyovs-*.7z
+        tag_name: ${{ env.RELEASE_TAG_JNKP }}
         fail_on_unmatched_files: true
         prerelease: true
