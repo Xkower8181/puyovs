@@ -170,6 +170,13 @@ jobs:
         tag: "nightly"
         message: "Latest release"
         force_push_tag: true
+      
+    - if: github.ref == 'refs/heads/jankplus'
+      uses: rickstaa/action-create-tag@v1
+      with:
+        tag: "nightlyjnkp"
+        message: "Latest release of the jankplus branch"
+        force_push_tag: true      
 
     - name: Download Artifacts
       uses: actions/download-artifact@v3
