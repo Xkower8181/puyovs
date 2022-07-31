@@ -67,15 +67,15 @@ void PVSApplication::setMusicMode(PVSApplication::MusicMode mode, bool advance) 
 	}
 
 	switch (mode) {
-	case MusicOff:
+	case MusicMode::MusicOff:
 		p->normalPlayer.stop();
 		p->feverPlayer.stop();
 		break;
-	case MusicPause:
+	case MusicMode::MusicPause:
 		p->normalPlayer.pause();
 		p->feverPlayer.pause();
 		break;
-	case MusicNormal:
+	case MusicMode::MusicNormal:
 		if (advance) {
 			if (p->settings->boolean("music", "looponce", true)) {
 				if (p->normalPlayer.numberOfTimesLooped() > 0)
@@ -89,7 +89,7 @@ void PVSApplication::setMusicMode(PVSApplication::MusicMode mode, bool advance) 
 
 		p->feverPlayer.stop();
 		break;
-	case MusicFever:
+	case MusicMode::MusicFever:
 		p->normalPlayer.pause();
 
 		if (advance)
@@ -136,12 +136,12 @@ Playlist& PVSApplication::feverPlaylist() const
 void PVSApplication::reloadSettings() const
 {
 	if (!p->settings->boolean("launcher", "enablemusic", true))
-		setMusicMode(MusicOff);
+		setMusicMode(MusicMode::MusicOff);
 
 	if (p->settings->integer("music", "loopmode", 0) == 0)
-		p->normalPlayer.setLoopMode(MusicPlayer::LoopSingle);
+		p->normalPlayer.setLoopMode(MusicPlayer::LoopMode::LoopSingle);
 	else
-		p->normalPlayer.setLoopMode(MusicPlayer::LoopAll);
+		p->normalPlayer.setLoopMode(MusicPlayer::LoopMode::LoopAll);
 
 	alib::Device* device = alib::open();
 	int soundVolume = qBound(qint64(0), p->settings->integer("music", "soundvolume", 100), qint64(100));
