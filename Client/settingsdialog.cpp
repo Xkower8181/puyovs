@@ -89,6 +89,7 @@ void SettingsDialog::load()
 	ui->AInput->setText(settings.string("controlsp1", "a", "x"));
 	ui->BInput->setText(settings.string("controlsp1", "b", "z"));
 	ui->StartInput->setText(settings.string("controlsp1", "start", "return"));
+	ui->SwapABConfirmCheckBox->setChecked(settings.boolean("controlsp1", "swapabconfirm", false));
 
 	// Customization
 	fetchFileLists();
@@ -158,6 +159,7 @@ void SettingsDialog::save()
 	settings.setString("controlsp1", "a", ui->AInput->text());
 	settings.setString("controlsp1", "b", ui->BInput->text());
 	settings.setString("controlsp1", "start", ui->StartInput->text());
+	settings.setBoolean("controlsp1", "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
 
 	// Customization
 	settings.setString("custom", "background", ui->BackgroundComboBox->currentText());
@@ -218,17 +220,17 @@ void SettingsDialog::updateEnabled(SettingsDialog::Rule rule) const
 		return;
 
 	switch (rule) {
-	case Tsu:
+	case Rule::Tsu:
 		ui->InitialFeverCountSpinBox->setEnabled(false);
 		ui->FeverPowerSpinBox->setEnabled(false);
 		break;
-	case Fever:
+	case Rule::Fever:
 		ui->PuyoToClearSpinBox->setEnabled(false);
 		break;
-	case Fever15:
+	case Rule::Fever15:
 		// ...Everything can be enabled?
 		break;
-	case EndlessFever:
+	case Rule::EndlessFever:
 		ui->PuyoToClearSpinBox->setEnabled(false);
 		ui->InitialFeverCountSpinBox->setEnabled(false);
 		break;
@@ -304,16 +306,16 @@ void SettingsDialog::setDefaultRuleSettings() const
 {
 	int index = ui->BaseRulesComboBox->currentIndex();
 	switch (Rule(index)) {
-	case Tsu:
+	case Rule::Tsu:
 		ui->TargetPointsSpinBox->setValue(70);
 		break;
-	case Fever15:
+	case Rule::Fever15:
 		ui->TargetPointsSpinBox->setValue(120);
 		break;
-	case Fever:
+	case Rule::Fever:
 		ui->TargetPointsSpinBox->setValue(120);
 		break;
-	case EndlessFever:
+	case Rule::EndlessFever:
 		ui->TargetPointsSpinBox->setValue(120);
 		break;
 	}

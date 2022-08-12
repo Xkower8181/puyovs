@@ -33,6 +33,7 @@ QString getDataLocation();
 QString createRulesetString(ppvs::RuleSetInfo* rs);
 
 namespace ilib {
+enum class HatPosition : int;
 struct InputEvent;
 }
 
@@ -43,27 +44,31 @@ extern QHash<int, QString> codeToName;
 
 class InputCondition {
 public:
-	enum MatchResult { NoMatch,
+	enum class MatchResult {
+		NoMatch,
 		MatchUp,
-		MatchDown };
+		MatchDown
+	};
 
-	InputCondition(const ilib::InputEvent& e);
-	InputCondition(QKeyEvent* e);
-	InputCondition(QString str);
+	explicit InputCondition(const ilib::InputEvent& e);
+	explicit InputCondition(QKeyEvent* e);
+	explicit InputCondition(QString str);
 	InputCondition();
 	~InputCondition();
 
-	MatchResult match(const ilib::InputEvent& e) const;
-	MatchResult match(QKeyEvent* e) const;
-	QString toString() const;
+	[[nodiscard]] MatchResult match(const ilib::InputEvent& e) const;
+	[[nodiscard]] MatchResult match(const QKeyEvent* e) const;
+	[[nodiscard]] QString toString() const;
 
 private:
-	enum condtype { keytype,
-		buttontype,
-		axistype,
-		hattype,
-		unknown };
-	int type;
+	enum class ConditionType {
+		KeyType,
+		ButtonType,
+		AxisType,
+		HatType,
+		Unknown
+	};
+	ConditionType type;
 	union {
 		struct {
 			int code;
@@ -80,7 +85,7 @@ private:
 		struct {
 			int device;
 			int id;
-			int direction;
+			ilib::HatPosition direction;
 		} hat;
 	};
 };

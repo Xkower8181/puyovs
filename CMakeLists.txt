@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.13)
 project(puyovs)
 
 # Improves IDE support.
@@ -55,6 +55,17 @@ if(MSVC)
   # Secure CRT functions are not portable, so we won't use them.
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
+
+option(SDL2_DISABLE_SDL2MAIN "" ON)
+option(SDL2_DISABLE_INSTALL "" ON)
+option(SDL2_DISABLE_UNINSTALL "" ON)
+set(SDL_SHARED OFF)
+set(SDL_SHARED_ENABLED_BY_DEFAULT OFF)
+set(SDL_STATIC ON)
+set(SDL_STATIC_ENABLED_BY_DEFAULT ON)
+set(SDL_TEST OFF)
+set(SDL_TEST_ENABLED_BY_DEFAULT OFF)
+set(OPT_DEF_LIBC ON)
 
 # Add sub-projects.
 add_subdirectory(Audiolib)
