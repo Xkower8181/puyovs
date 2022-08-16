@@ -6,6 +6,8 @@ Puyo VS 2 was originally written by [Hernan](https://twitter.com/HernanZh/) with
 
 We hope that the community can benefit from this release and build a robust future for Puyo VS.
 
+**Note**: There is no longer support for the QMake build system. Sorry! You may continue to use Qt Creator with CMake instead. If you have any issues using CMake, please file issues; we would like full parity with QMake as soon as possible.
+
 ## Trademark Notice
 "Puyo Puyo" is a registered U.S. trademark of SEGA CORPORATION since 2017. Puyo VS is not endorsed or related to SEGA CORPORATION in any way.
 
@@ -85,7 +87,7 @@ Other IDEs and text editors that support CMake should work just fine. For most t
 
 ### Linux
 
-#### Install Dependenices
+#### Install Dependencies
 
 You need to install GCC, CMake and GNU Make (or, if you prefer, Ninja.) Puyo VS also depends on `libpulse`, `libasound2`, `libx11`, and Qt 5, so you need to install the development packages for these. The packages vary per distro, but on Ubuntu you can install them with:
 
