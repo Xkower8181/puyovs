@@ -2,8 +2,12 @@
 
 #include "../Font.h"
 #include "./OpenGL/OpenGL.h"
+#include "./Software/Software.h"
+
 #include <SDL_ttf.h>
 #include <spng.h>
+
+namespace PuyoVS::Renderers {
 
 void Texture::loadPng(const void* data, size_t length)
 {
@@ -20,7 +24,7 @@ void Texture::loadPng(const void* data, size_t length)
 	upload(static_cast<int>(header.width), static_cast<int>(header.height), out);
 }
 
-void Texture::renderText(const Font& font, const char* text, const SDL_Color color, const unsigned wrapLength, int& w, int& h)
+void Texture::renderText(const ClientNG::Font& font, const char* text, const SDL_Color color, const unsigned wrapLength, int& w, int& h)
 {
 	SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(font.m_font, text, color, wrapLength);
 	w = surface->w;
@@ -35,11 +39,14 @@ RenderTarget* createRenderer(SDL_Window* window, const RenderSettings& settings)
 {
 	switch (settings.backend) {
 	case RenderBackend::OpenGL:
-		return new RenderTargetGL(window, settings.debug);
+		return new OpenGL::RenderTargetGL(window, settings.debug);
 	case RenderBackend::Vulkan:
 	case RenderBackend::Software:
+		return new Software::RenderTargetSoft(window, settings.debug);
 	case RenderBackend::Metal:
 		break;
 	}
 	return nullptr;
+}
+
 }

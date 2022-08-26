@@ -13,10 +13,10 @@ int main(int argc, char** argv)
 	if (TTF_Init() < 0) {
 		SDL_Log("Unable to initialize SDL TTF: %s\n", SDL_GetError());
 		SDL_Quit();
-		return (2);
+		return 2;
 	}
 
-	Game game;
+    PuyoVS::ClientNG::Game game;
 	game.run();
 	SDL_Quit();
 	return 0;

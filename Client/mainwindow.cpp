@@ -48,12 +48,18 @@ MainWindow::MainWindow(QWidget* parent)
 	// UI
 	languageManager->setLanguageFromFilename(settings.string("launcher", "language", ""));
 	ui->setupUi(this);
-	ui->LogoLabel->setPixmap(QPixmap("Data/Lobby/title.png"));
+	QPixmap titlePixmap;
+	if (titlePixmap.load("Data/Lobby/title2x.png")) {
+		titlePixmap.setDevicePixelRatio(2.0);
+	} else {
+		titlePixmap.load("Data/Lobby/title.png");
+	}
+	ui->LogoLabel->setPixmap(titlePixmap);
 	ui->UsernameLineEdit->setFocus();
 	ui->statusBar->showMessage("Developed by Hernan and contributors. https://puyovs.com");
 
 	// Profile Menu
-    const auto profileMenu = new QMenu(this);
+	const auto profileMenu = new QMenu(this);
 	profileMenu->addAction(ui->ActionSearch);
 	profileMenu->addAction(ui->ActionLogOut);
 	ui->ProfileToolButton->setMenu(profileMenu);
@@ -90,12 +96,12 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(client, &NetClient::updateRankedPlayerCount, this, &MainWindow::playerCountMessageReceived);
 
 	// Update ranked counter every 10 seconds
-    const auto timer = new QTimer(this);
+	const auto timer = new QTimer(this);
 	connect(timer, &QTimer::timeout, this, &MainWindow::updateRankedCount);
 	timer->start(10000); // Time specified in ms
 
 	// Setup languages
-	connect(languageManager, SIGNAL(languagesModified()), SLOT(refreshLanguages()));
+	connect(languageManager, &LanguageManager::languagesModified, this, &MainWindow::refreshLanguages);
 	refreshLanguages();
 
 	// UI settings
@@ -451,7 +457,7 @@ void MainWindow::showSettings()
 {
 	if (!showSettingsDlg) {
 		SettingsDialog* settingsDlg = new SettingsDialog(languageManager);
-		connect(settingsDlg, SIGNAL(finished(int)), this, SLOT(on_SettingsDialog_Finished(int)));
+		connect(settingsDlg, &QDialog::finished, this, &MainWindow::on_SettingsDialog_Finished);
 		settingsDlg->show();
 		showSettingsDlg = true;
 	}
@@ -699,7 +705,7 @@ void MainWindow::motdMessageReceived(QString message)
 	motd = message;
 
 	StartupDialog* dlg = new StartupDialog(motd, this);
-	connect(dlg, SIGNAL(finished(int)), this, SLOT(on_StartupDialog_Finished(int)));
+	connect(dlg, &QDialog::finished, this, &MainWindow::on_StartupDialog_Finished);
 	dlg->show();
 }
 
@@ -740,7 +746,7 @@ void MainWindow::on_ChatroomListWidget_itemClicked(QListWidgetItem* item) const
 void MainWindow::on_CreateChatroomButton_clicked()
 {
 	CreateChatroomDialog* createChatDlg = new CreateChatroomDialog(this);
-	connect(createChatDlg, SIGNAL(createChatroom(CreateChatroomDialog*)), this, SLOT(on_CreateChatroomDialog_Finished(CreateChatroomDialog*)));
+	connect(createChatDlg, &CreateChatroomDialog::createChatroom, this, &MainWindow::on_CreateChatroomDialog_Finished);
 	createChatDlg->show();
 }
 
@@ -818,7 +824,7 @@ void MainWindow::on_OfflineToolButton_clicked()
 	}
 	mGameSettings = new ppvs::GameSettings();
 	OfflineDialog* dlg = new OfflineDialog(mGameSettings);
-	connect(dlg, SIGNAL(finished(int)), this, SLOT(on_OfflineDialog_Finished(int)));
+	connect(dlg, &QDialog::finished, this, &MainWindow::on_OfflineDialog_Finished);
 	dlg->show();
 }
 
@@ -976,7 +982,7 @@ void MainWindow::updateServerList()
 	request.setUrl(QUrl("https://puyovs.com/files/servers.txt"));
 	request.setRawHeader("User-Agent", PUYOVS_USER_AGENT);
 	serverListReply = netMan->get(request);
-	connect(serverListReply, SIGNAL(finished()), SLOT(getServerList()));
+	connect(serverListReply, &QNetworkReply::finished, this, &MainWindow::getServerList);
 }
 
 void MainWindow::on_PasswordLineEdit_textEdited(const QString& arg1)
@@ -1080,7 +1086,7 @@ void MainWindow::on_ActionSearch_triggered()
 {
 	if (!showSearchDlg) {
 		searchDlg = new SearchDialog(this, client);
-		connect(searchDlg, SIGNAL(finished(int)), this, SLOT(on_SearchDialog_Finished(int)));
+		connect(searchDlg, &QDialog::finished, this, &MainWindow::on_SearchDialog_Finished);
 		searchDlg->show();
 		showSearchDlg = true;
 	}
